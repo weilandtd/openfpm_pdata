@@ -16,7 +16,7 @@
 #include "Vector/vector_dist_key.hpp"
 #include "memory/PtrMemory.hpp"
 #include "NN/CellList/CellList.hpp"
-#include "NN/CellList/CellListFast_hilb.hpp"
+#include "NN/CellList/CellListFast_gen.hpp"
 #include "util/common.hpp"
 #include "util/object_util.hpp"
 #include "memory/ExtPreAlloc.hpp"
@@ -355,7 +355,7 @@ public:
 	 * \return the Cell list
 	 *
 	 */
-	template<typename CellL = CellList<dim, St, FAST, shift<dim, St> > > CellL getCellListSym(St r_cut)
+	template<typename CellL = CellList<dim, St, Mem_fast<dim,St>, shift<dim, St> > > CellL getCellListSym(St r_cut)
 	{
 		// Cell list
 		CellL cell_list;
@@ -385,7 +385,7 @@ public:
 	 * \return the Cell list
 	 *
 	 */
-	template<typename CellL = CellList<dim, St, FAST, shift<dim, St> > > CellL getCellList(St r_cut)
+	template<typename CellL = CellList<dim, St, Mem_fast<dim,St>, shift<dim, St> > > CellL getCellList(St r_cut)
 	{
 		// Get ghost and anlarge by 1%
 		Ghost<dim,St> g = getDecomposition().getGhost();
@@ -403,7 +403,7 @@ public:
 	 * \return the Cell list
 	 *
 	 */
-	template<typename CellL = CellList_hilb<dim, St, FAST, shift<dim, St> > > CellL getCellList_hilb(St r_cut)
+	template<typename CellL = CellList_gen<dim, St, Process_keys_hilb<dim>, Mem_fast<dim,St>, shift<dim, St> > > CellL getCellList_hilb(St r_cut)
 	{
 		// Get ghost and anlarge by 1%
 		Ghost<dim,St> g = getDecomposition().getGhost();
@@ -419,7 +419,7 @@ public:
 	 * \param cell_list Cell list to update
 	 *
 	 */
-	template<typename CellL = CellList<dim, St, FAST, shift<dim, St> > > void updateCellList(CellL & cell_list)
+	template<typename CellL = CellList<dim, St, Mem_fast<dim,St>, shift<dim, St> > > void updateCellList(CellL & cell_list)
 	{
 		populate_cell_list(v_pos,cell_list,g_m,CL_NON_SYMMETRIC);
 
@@ -433,7 +433,7 @@ public:
 	 * \param cell_list Cell list to update
 	 *
 	 */
-	template<typename CellL = CellList<dim, St, FAST, shift<dim, St> > > void updateCellListSym(CellL & cell_list)
+	template<typename CellL = CellList<dim, St, Mem_fast<dim,St>, shift<dim, St> > > void updateCellListSym(CellL & cell_list)
 	{
 		populate_cell_list(v_pos,cell_list,g_m,CL_SYMMETRIC);
 
@@ -455,7 +455,7 @@ public:
 	 * \return the CellList
 	 *
 	 */
-	template<typename CellL = CellList<dim, St, FAST, shift<dim, St> > > CellL getCellList(St r_cut, const Ghost<dim, St> & enlarge)
+	template<typename CellL = CellList<dim, St, Mem_fast<dim,St>, shift<dim, St> > > CellL getCellList(St r_cut, const Ghost<dim, St> & enlarge)
 	{
 		CellL cell_list;
 
@@ -490,7 +490,7 @@ public:
 	 * \return The Cell-list
 	 *
 	 */
-	template<typename CellL = CellList_hilb<dim, St, FAST, shift<dim, St> > > CellL getCellList_hilb(St r_cut, const Ghost<dim, St> & enlarge)
+	template<typename CellL = CellList_gen<dim, St, Process_keys_hilb<dim>, Mem_fast<dim,St>, shift<dim, St> > > CellL getCellList_hilb(St r_cut, const Ghost<dim, St> & enlarge)
 	{
 		CellL cell_list;
 
@@ -636,7 +636,7 @@ public:
 	 *
 	 *
 	 */
-	template<typename CellL=CellList<dim,St,FAST,shift<dim,St> > > void reorder (int32_t m)
+	template<typename CellL=CellList<dim,St,Mem_fast<dim,St>,shift<dim,St> > > void reorder (int32_t m)
 	{
 		reorder(m,getDecomposition().getGhost());
 	}
@@ -654,7 +654,7 @@ public:
 	 * \param enlarge In case of padding particles the cell list must be enlarged, like a ghost this parameter say how much must be enlarged
 	 *
 	 */
-	template<typename CellL=CellList<dim,St,FAST,shift<dim,St> > > void reorder(int32_t m, const Ghost<dim,St> & enlarge)
+	template<typename CellL=CellList<dim,St,Mem_fast<dim,St>,shift<dim,St> > > void reorder(int32_t m, const Ghost<dim,St> & enlarge)
 	{
 		// reset the ghost part
 		v_pos.resize(g_m);
