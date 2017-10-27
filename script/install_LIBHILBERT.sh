@@ -13,7 +13,7 @@ tar -xf libhilbert-master.tar.gz
 cd libhilbert-master
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX:PATH=$1/LIBHILBERT ..
+cmake --CMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_INSTALL_PREFIX:PATH=$1/LIBHILBERT ..
 make all
 make install
 
