@@ -12,8 +12,9 @@ fi
 #tar -xvf openmpi-2.1.1.tar.bz2
 #cd openmpi-2.1.1
 rm -rf ompi
-git clone https://github.com/open-mpi/ompi.git -b v3.0.0
+git clone https://github.com/open-mpi/ompi.git
 cd ompi
+git checkout v3.0.0
 
 #
 #                  --disable-mca-dso \
