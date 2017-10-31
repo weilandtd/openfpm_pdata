@@ -11,7 +11,7 @@ fi
 #wget http://ppmcore.mpi-cbg.de/upload/openmpi-2.1.1.tar.bz2
 #tar -xvf openmpi-2.1.1.tar.bz2
 #cd openmpi-2.1.1
-
+rm -rf ompi
 git clone https://github.com/open-mpi/ompi.git -b v3.0.0
 cd ompi
 
