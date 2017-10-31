@@ -12,7 +12,7 @@ fi
 #tar -xvf openmpi-2.1.1.tar.bz2
 #cd openmpi-2.1.1
 
-git clone --branch v3.0.0 https://github.com/open-mpi/ompi.git 
+git clone https://github.com/open-mpi/ompi.git -b v3.0.0
 cd ompi
 
 #
