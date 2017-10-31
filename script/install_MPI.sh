@@ -11,10 +11,14 @@ fi
 #wget http://ppmcore.mpi-cbg.de/upload/openmpi-2.1.1.tar.bz2
 #tar -xvf openmpi-2.1.1.tar.bz2
 #cd openmpi-2.1.1
-rm -rf ompi
-git clone https://github.com/open-mpi/ompi.git
-cd ompi
-git checkout v3.0.0
+
+# Get openmpi-3.0.0
+rm -rf openmpi-3.0.0
+rm openmpi-3.0.0.tar.bz2
+wget https://www.open-mpi.org/software/ompi/v3.0/downloads/openmpi-3.0.0.tar.bz2
+tar -xvf openmpi-3.0.0.tar.bz2
+cd openmpi-3.0.0
+
 
 #
 #                  --disable-mca-dso \
